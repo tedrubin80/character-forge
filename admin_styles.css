@@ -1,0 +1,307 @@
+/**
+ * D&D Creator Hub - Admin Panel Styles
+ * Additional styles for the admin panel components
+ */
+
+/* Password Management Styles */
+.password-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.password-item {
+    padding: 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    transition: all 0.2s ease;
+}
+
+.password-item:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+}
+
+/* Access Log Styles */
+.login-log {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.log-entry {
+    padding: 8px 12px;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 0.9em;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.log-entry:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.log-entry.success {
+    background-color: #d4edda;
+    border-left: 4px solid #28a745;
+    color: #155724;
+}
+
+.log-entry.error {
+    background-color: #f8d7da;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+}
+
+.log-entry.warning {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    color: #856404;
+}
+
+.log-entry.info {
+    background-color: #d1ecf1;
+    border-left: 4px solid #17a2b8;
+    color: #0c5460;
+}
+
+/* Statistics Cards */
+.admin-stats {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.admin-stats:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.campaign-stat {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+    transition: transform 0.2s ease;
+}
+
+.campaign-stat:hover {
+    transform: scale(1.02);
+}
+
+.campaign-stat i {
+    margin-bottom: 10px;
+}
+
+.campaign-stat h5 {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.campaign-stat input {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* System Report Styles */
+#systemReport {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#reportContent {
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 15px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85em;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Access Info Styles */
+.access-info p {
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    border-left: 3px solid #007bff;
+}
+
+.access-info strong {
+    color: #495057;
+    display: inline-block;
+    min-width: 130px;
+}
+
+/* Theme-specific Admin Panel Colors */
+body.theme-mystic .admin-stats {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+body.theme-forest .admin-stats {
+    background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+}
+
+body.theme-fire .admin-stats {
+    background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+}
+
+body.theme-ocean .admin-stats {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+}
+
+body.theme-shadow .admin-stats {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+body.theme-celestial .admin-stats {
+    background: linear-gradient(135deg, #8360c3 0%, #2ebf91 100%);
+}
+
+/* Animation for loading states */
+.loading-admin {
+    opacity: 0.6;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.loading-admin::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .admin-stats {
+        margin-bottom: 15px;
+    }
+    
+    .password-item {
+        padding: 10px;
+    }
+    
+    .password-item .btn {
+        margin-top: 5px;
+    }
+    
+    .access-info strong {
+        min-width: auto;
+        display: block;
+        margin-bottom: 4px;
+    }
+    
+    #reportContent {
+        font-size: 0.75em;
+        padding: 10px;
+    }
+}
+
+/* Dark mode support for admin panel */
+@media (prefers-color-scheme: dark) {
+    .password-item {
+        background: #343a40;
+        border-color: #495057;
+        color: #f8f9fa;
+    }
+    
+    .login-log {
+        background: #343a40;
+    }
+    
+    .log-entry {
+        border-color: #495057;
+        color: #f8f9fa;
+    }
+    
+    .access-info p {
+        background: #343a40;
+        color: #f8f9fa;
+    }
+    
+    #reportContent {
+        background: #212529;
+        color: #f8f9fa;
+        border-color: #495057;
+    }
+}
+
+/* Custom scrollbars for admin panel */
+.password-list::-webkit-scrollbar,
+.login-log::-webkit-scrollbar,
+#reportContent::-webkit-scrollbar {
+    width: 6px;
+}
+
+.password-list::-webkit-scrollbar-track,
+.login-log::-webkit-scrollbar-track,
+#reportContent::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.password-list::-webkit-scrollbar-thumb,
+.login-log::-webkit-scrollbar-thumb,
+#reportContent::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.password-list::-webkit-scrollbar-thumb:hover,
+.login-log::-webkit-scrollbar-thumb:hover,
+#reportContent::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Success/Error states for forms */
+.form-success {
+    border-color: #28a745 !important;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+}
+
+.form-error {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+
+/* Notification positioning for admin panel */
+.admin-notification {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 9999;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+/* Badge styling improvements */
+.badge.bg-primary { background-color: #007bff !important; }
+.badge.bg-success { background-color: #28a745 !important; }
+.badge.bg-warning { background-color: #ffc107 !important; color: #212529 !important; }
+.badge.bg-info { background-color: #17a2b8 !important; }
+.badge.bg-danger { background-color: #dc3545 !important; }
+.badge.bg-secondary { background-color: #6c757d !important; }
