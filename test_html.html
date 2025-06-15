@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Creator Hub - Test</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background: linear-gradient(45deg, #667eea, #764ba2); min-height: 100vh; }
+        .test-container { background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="test-container p-5">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-dragon fa-4x text-primary mb-3"></i>
+                        <h1>D&D Creator Hub - Test Page</h1>
+                        <p class="text-muted">Testing basic functionality</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>🔍 Diagnostics</h4>
+                            <div id="diagnostics" class="bg-light p-3 rounded">
+                                <p>✅ HTML Loading: <span class="text-success">Working</span></p>
+                                <p>✅ Bootstrap CSS: <span class="text-success">Working</span></p>
+                                <p>✅ FontAwesome: <span class="text-success">Working</span></p>
+                                <p id="jsTest">⏳ JavaScript: <span class="text-warning">Testing...</span></p>
+                                <p id="apiTest">⏳ API Access: <span class="text-warning">Testing...</span></p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h4>🔑 Password Reset</h4>
+                            <button class="btn btn-danger mb-3 w-100" onclick="resetPasswords()">
+                                <i class="fas fa-key me-2"></i>Reset Passwords Now
+                            </button>
+                            <div id="resetResult" class="alert" style="display: none;"></div>
+                            
+                            <h5>Default Passwords:</h5>
+                            <ul class="list-group">
+                                <li class="list-group-item">dragon</li>
+                                <li class="list-group-item">dnd2024</li>
+                                <li class="list-group-item">admin</li>
+                                <li class="list-group-item">dungeon</li>
+                                <li class="list-group-item">master</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <h4>🧪 Quick Login Test</h4>
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" id="testPassword" placeholder="Try a password" value="dragon">
+                            <button class="btn btn-primary" onclick="testLogin()">Test Login</button>
+                        </div>
+                        <div id="loginResult" class="alert" style="display: none;"></div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <a href="index.html" class="btn btn-success">
+                            <i class="fas fa-arrow-right me-2"></i>Go to Main App
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Test JavaScript
+        document.getElementById('jsTest').innerHTML = '✅ JavaScript: <span class="text-success">Working</span>';
+        
+        // Test API access
+        async function testAPI() {
+            try {
+                const response = await fetch('api/auth.php?action=test');
+                const data = await response.json();
+                document.getElementById('apiTest').innerHTML = '✅ API Access: <span class="text-success">Working</span>';
+            } catch (error) {
+                document.getElementById('apiTest').innerHTML = '❌ API Access: <span class="text-danger">Failed - ' + error.message + '</span>';
+            }
+        }
+        
+        // Reset passwords function
+        async function resetPasswords() {
+            const resultDiv = document.getElementById('resetResult');
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'alert alert-info';
+            resultDiv.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Resetting passwords...';
+            
+            try {
+                const response = await fetch('api/auth.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'reset_passwords' })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.className = 'alert alert-success';
+                    resultDiv.innerHTML = '<i class="fas fa-check me-2"></i>Passwords reset successfully!';
+                } else {
+                    throw new Error(data.error || 'Reset failed');
+                }
+            } catch (error) {
+                resultDiv.className = 'alert alert-danger';
+                resultDiv.innerHTML = '<i class="fas fa-times me-2"></i>Reset failed: ' + error.message;
+            }
+        }
+        
+        // Test login function
+        async function testLogin() {
+            const password = document.getElementById('testPassword').value;
+            const resultDiv = document.getElementById('loginResult');
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'alert alert-info';
+            resultDiv.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Testing login...';
+            
+            try {
+                const response = await fetch('api/auth.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'login', password: password })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.className = 'alert alert-success';
+                    resultDiv.innerHTML = '<i class="fas fa-check me-2"></i>Login successful! Password "' + password + '" works.';
+                } else {
+                    resultDiv.className = 'alert alert-danger';
+                    resultDiv.innerHTML = '<i class="fas fa-times me-2"></i>Login failed: ' + (data.error || 'Invalid password');
+                }
+            } catch (error) {
+                resultDiv.className = 'alert alert-danger';
+                resultDiv.innerHTML = '<i class="fas fa-times me-2"></i>Login test failed: ' + error.message;
+            }
+        }
+        
+        // Run API test on load
+        testAPI();
+        
+        console.log('Test page loaded successfully!');
+    </script>
+</body>
+</html>
