@@ -1,0 +1,35 @@
+[
+    {
+        "id": "analytics_8eddce7730c7_1749047643",
+        "event_type": "login_success",
+        "data": [],
+        "user_id": "417820be4b9a0d096774275bf7dac94e",
+        "session_id": "417820be4b9a0d096774275bf7dac94e",
+        "timestamp": "2025-06-04T14:34:03.327Z",
+        "ip_address": "17.10.96.143",
+        "user_agent": "Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/18.5 Safari\/605.1.15",
+        "referer": "https:\/\/characterforge.online\/"
+    },
+    {
+        "id": "analytics_41d0e820eb43_1749048386",
+        "event_type": "login_success",
+        "data": [],
+        "user_id": "975c633f7e8b299aa8f2074b8476e5f1",
+        "session_id": "975c633f7e8b299aa8f2074b8476e5f1",
+        "timestamp": "2025-06-04T14:46:26.382Z",
+        "ip_address": "17.10.253.184",
+        "user_agent": "Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/18.4 Safari\/605.1.15",
+        "referer": "https:\/\/characterforge.online\/"
+    },
+    {
+        "id": "analytics_13be39718eb0_1749050482",
+        "event_type": "logout",
+        "data": [],
+        "user_id": "417820be4b9a0d096774275bf7dac94e",
+        "session_id": "417820be4b9a0d096774275bf7dac94e",
+        "timestamp": "2025-06-04T15:21:21.930Z",
+        "ip_address": "17.10.96.143",
+        "user_agent": "Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/18.5 Safari\/605.1.15",
+        "referer": "https:\/\/characterforge.online\/"
+    }
+]

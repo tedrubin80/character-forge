@@ -1,0 +1,13 @@
+[
+    {
+        "id": "analytics_49f77f9ec48b_1749947218",
+        "event_type": "login_success",
+        "data": [],
+        "user_id": "d8d836f1a751dcd1c916528bb6475826",
+        "session_id": "d8d836f1a751dcd1c916528bb6475826",
+        "timestamp": "2025-06-15T00:26:58.133Z",
+        "ip_address": "172.225.246.245",
+        "user_agent": "Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit\/605.1.15 (KHTML, like Gecko) Version\/18.5 Safari\/605.1.15",
+        "referer": "https:\/\/characterforge.online\/"
+    }
+]

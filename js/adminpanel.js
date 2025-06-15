@@ -709,7 +709,7 @@ class AdminPanel {
 
         for (const api of apis) {
             try {
-                const response = await fetch(`api/${api.endpoint}`);
+                const response = await fetch(`/api/${api.endpoint}`);
                 const result = await response.json();
                 
                 if (response.ok && result.success !== false) {
